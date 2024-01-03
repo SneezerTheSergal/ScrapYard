@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tauri App</title>
+    <script type="module" src="./main.js"></script>
+    <style>
+      .logo.vanilla:hover {
+        filter: drop-shadow(0 0 2em #ffe21c);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+          <img
+            src="assets/Scrap.png"
+            class="logo vanilla"
+            alt="Scrap logo"
+          />
+      </div>
+
+      <div class="container-2">
+        <form class="row" id="greet-form">
+          <input type="text" name="filename" id="filenameinput">
+          <label for="filenameinput" class="form-label">enter file name</label>
+          <button id="NewFileButton">create new file</button>
+        </form>
+      </div>
+
+      <ul id="files">
+        <li>open file</li>
+      </ul>
+    </div>
+  </body>
+</html>

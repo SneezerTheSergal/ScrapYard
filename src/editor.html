@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tauri App</title>
+    <script type="module" src="editor.js"></script>
+</head>
+<body>
+<div class="menubar">
+    <div>
+        <button class="navbuttons" id="returnButton">new/open</button>
+    </div>
+    <div>
+        <h6 id="fileName"></h6>
+    </div>
+    <div>
+        <button class="navbuttons" id="saveButton">save</button>
+        <button class="navbuttons" id="deleteButton">delete</button>
+    </div>
+
+</div>
+<div class="row">
+    <div id="filesList">
+
+    </div>
+    <textarea id="editor"></textarea>
+</div>
+
+</body>
+</html>
