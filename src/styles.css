@@ -15,6 +15,7 @@
 }
 body {
   margin: 0;
+  background-color: #2f2f2f;
 }
 .container {
   margin: 0;
@@ -33,8 +34,8 @@ body {
   border-radius: 7px;
 }
 #editor {
-  background-color:#3b3b3b;
-  border-color: #3b3b3b;
+  background-color:#1e1f22;
+  border-color: #1e1f22;
   border-radius: 7px;
   color: white;
   height: 600px;
@@ -49,19 +50,19 @@ body {
   cursor: pointer;
   font-size: small;
   padding: 5px;
-  width: 100px;
+  width: 150px;
 }
 .fileListItem:hover {
   background-color: #363636;
   cursor: pointer;
   font-size: small;
   padding: 5px;
-  width: 100px;
+  width: 150px;
 }
 #filesList {
   background-color: #262626;
   margin-right: 5%;
-  width: 110px;
+  width: 160px;
 }
 .menubar {
   background-color: #262626;
@@ -76,6 +77,9 @@ body {
   padding: 5px;
   margin: 0;
   border-radius: 0;
+}
+#saveButton {
+  background-color: green;
 }
 #fileName {
   font-size: small;

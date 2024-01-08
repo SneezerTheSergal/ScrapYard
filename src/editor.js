@@ -4,6 +4,21 @@ const  invoke = Tauri.invoke;
 document.getElementById("returnButton").addEventListener('click', () => {
     window.location.href = `index.html`
 });
+document.getElementById("addHeaderButton").addEventListener('click', () => {
+    let content = document.getElementById("editor");
+    console.log("reached part 1")
+    content.value = content.value + "[=========================================================================================]\n" +
+        "                                       NEXT SUBJECT\n" +
+        "[=========================================================================================]\n"
+    console.log("should have added header")
+})
+document.getElementById("addPointButton").addEventListener('click', () => {
+    let content = document.getElementById("editor");
+    console.log("reached part 1")
+    content.value = content.value + " - \n"
+    console.log("should have added point")
+})
+
 document.getElementById("saveButton").addEventListener('click', () => {
     let content = document.getElementById("editor").value;
 
