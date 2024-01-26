@@ -49,20 +49,28 @@ body {
   background-color: #262626;
   cursor: pointer;
   font-size: small;
-  padding: 5px;
+  text-align: left;
+  padding: 5px 5px 5px 5px;
   width: 150px;
 }
 .fileListItem:hover {
   background-color: #363636;
   cursor: pointer;
   font-size: small;
-  padding: 5px;
+  text-align: left;
+  padding: 5px 5px 5px 5px;
   width: 150px;
 }
 #filesList {
   background-color: #262626;
-  margin-right: 5%;
+  margin-right: 3%;
   width: 160px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding-left: 28px;
+  direction: rtl;
+  scrollbar-color: #262626 #3b3b3b;
+  scrollbar-width: thin;
 }
 .menubar {
   background-color: #262626;
@@ -79,7 +87,10 @@ body {
   border-radius: 0;
 }
 #saveButton {
-  background-color: green;
+  background-color: #0d753a;
+}
+#saveButtonClicked {
+  background-color: #00e571;
 }
 #fileName {
   font-size: small;

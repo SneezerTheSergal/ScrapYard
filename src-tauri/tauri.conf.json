@@ -17,10 +17,12 @@
         "all": false,
         "open": true
       },
+      "globalShortcut": {
+        "all": true
+      },
       "fs": {
         "all": true
       }
-
     },
     "bundle": {
       "active": true,

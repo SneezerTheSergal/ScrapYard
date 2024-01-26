@@ -8,6 +8,8 @@
   },
   "private": true,
   "dependencies": {
+    "@tauri-apps/api": "^1.5.3",
+    "ahooks": "^3.7.8",
     "tauri": "^0.15.0"
   }
 }

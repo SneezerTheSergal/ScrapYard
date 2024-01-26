@@ -34,6 +34,7 @@ async function updateFileList() {
     }
 }
 function openEditor(filename) {
+    console.log("opened file ", filename);
     window.location.href = `editor.html?file=${encodeURIComponent(filename)}`
 }
 

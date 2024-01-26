@@ -1,12 +1,12 @@
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
-use std::fs;
-use tauri::{AppHandle, Manager, Window, WindowEvent};
+use tauri::{AppHandle, Manager, Window};
 use std::fs::*;
-use std::io::Write;
-use std::path::{Path, PathBuf};
+use std::io::{Error, Write};
+use std::path::{PathBuf};
 use log::error;
+use tauri::GlobalShortcutManager;
 
 
 
@@ -53,10 +53,10 @@ impl serde::Serialize for ThisError {
 
 
 #[tauri::command]
-fn create_file(app_handle: AppHandle,file_name: String) {
+fn create_file(app_handle: AppHandle,file_name: String) -> MyResult<()> {
     let mut corrected_file_name = file_name.replace(" ", "_");
     println!("entered create file with name: {corrected_file_name}");
-    let mut path  = app_handle.path_resolver().app_local_data_dir();
+    let path  = app_handle.path_resolver().app_local_data_dir();
     let fixed_path = match path {
         Some(path_unwrap) => {
             path_unwrap.join("files").join(format!("{}.txt",corrected_file_name))
@@ -69,16 +69,21 @@ fn create_file(app_handle: AppHandle,file_name: String) {
 
     println!("entered create file with path: {:?}", fixed_path);
     println!("entered create file with full path: {:?}", fixed_path);
-    if let file = File::create(fixed_path.clone()){
-        match file {
+    File::create(fixed_path.clone())?;
+    Ok(())
+
+
+    /*if let new_file = File::create(fixed_path.clone()){
+        match new_file {
             Ok(file) => {
                 Ok(file)
             },
             Err(error) => {
-                Err("error creating file")
+                Err(error)
             }
-        };
-    };
+        }
+    };*/
+
 }
 
 #[tauri::command]
@@ -99,7 +104,7 @@ async fn get_files(app_handle: AppHandle) -> MyResult<Vec<String>> {
 
 #[tauri::command]
 fn get_file_content(app_handle: AppHandle ,file_name: String) -> MyResult<String> {
-   let mut path  = app_handle.path_resolver().app_local_data_dir();
+   let path  = app_handle.path_resolver().app_local_data_dir();
     let fixed_path = match path {
         Some(mut path_unwrap) => {
             path_unwrap.push("files");
@@ -127,7 +132,7 @@ fn save_file(app_handle: AppHandle ,file_content: String, window: Window) {
         println!("{:?}", url);
         let file_name = url.query().unwrap().replace("file=","");
         println!("file name: {file_name}");
-        let mut path  = app_handle.path_resolver().app_local_data_dir();
+        let path  = app_handle.path_resolver().app_local_data_dir();
         let fixed_path = match path {
             Some(mut path_unwrap) => {
                 path_unwrap.push("files");
@@ -142,7 +147,7 @@ fn save_file(app_handle: AppHandle ,file_content: String, window: Window) {
 
 
 
-        fs::write(fixed_path, file_content).expect("expected content to add");
+        write(fixed_path, file_content).expect("expected content to add");
     } else {
         println!("main window could not be retrieved (is_none)");
         println!("{:#?}", window.clone())
@@ -150,7 +155,7 @@ fn save_file(app_handle: AppHandle ,file_content: String, window: Window) {
 }
 #[tauri::command]
 fn delete_this_file(app_handle: AppHandle,file_name: String) {
-    let mut path  = app_handle.path_resolver().app_local_data_dir();
+    let path  = app_handle.path_resolver().app_local_data_dir();
     let fixed_path = match path {
         Some(mut path_unwrap) => {
             path_unwrap.push("files");
